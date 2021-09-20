@@ -26,12 +26,26 @@
     margin-top: 40px;
 }
 
+#icono-user {
+  color: #8a4b30;
+  margin-left:15px;
+}
+
 #logo {
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 7px;
+  display: block;
+  width: 130px;
+  height: 107px;
 }
 
 #header {
   width: 100%;
   display: flex;
 }
+
+.header .link-logo {
+  width: 130px;
+  height: 107px;
+}
+

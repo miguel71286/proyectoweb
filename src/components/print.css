@@ -1,0 +1,36 @@
+#print {
+    background: rgba(235, 178, 82, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width:50%;
+  }
+
+#precio {
+  margin-top:10px;
+}
+
+.bg-secondary {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-secondary-rgb),var(--bs-bg-opacity))!important;
+}
+
+.badge {
+  display: inline-block;
+  padding: .15em .20em;
+  font-size: .60em;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .35rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem 0rem 1rem;
+}

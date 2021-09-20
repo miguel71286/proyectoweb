@@ -87,6 +87,14 @@
     padding: 0 !important;  
 }
 
+#item10{ 
+    grid-column: 1/8;
+    grid-row: 2/7;
+    position: relative;
+    padding: 0 !important;  
+    background: url('./images/logo1.png');
+}
+
 footer{
     background-color: black;
     color: whitesmoke;

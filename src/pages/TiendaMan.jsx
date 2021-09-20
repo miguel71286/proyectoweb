@@ -1,24 +1,32 @@
 import React from "react";
 import "./tiendaman.css";
 import video from "../images/manpage.mp4";
+import PrintMan from "../components/PrintMan";
+
 
 const TiendaMan = () => {
   return (
-    <div id="listadoMan">
-      <video
-        playsinline="playsinline"
-        autoplay="autoplay"
-        muted="muted"
-        loop="loop"
-      > 
-        <source src={video} type="video/mp4" />
-      </video>
-      {/* <div className="tarjetas">
-          {listaTiendas.map((elemento) => {
-            // return <Print key={elemento.id} onListado={elemento}/>;
-          })}
-        </div> */}
-    </div>
+    <div className="contenedor-man">
+    <div className="overlay"></div>
+
+    <video className="video-man"
+      playsInline
+      autoPlay
+      muted="muted"
+      loop="loop"
+    >
+      <source src={video} type="video/mp4" />
+    </video>
+
+    <div className="container h-100">
+        <div className="d-flex h-100">
+          <div className="w-100">
+            <PrintMan />
+          </div>
+        </div>
+      </div>
+      </div>
+
   );
 };
 

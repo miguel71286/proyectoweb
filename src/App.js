@@ -4,10 +4,10 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+import { useState, useEffect } from "react";
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import '..node_modules/bootstrap-icons/font/fonts/bootstrap-icons.css';
 import "./App.css";
 import Header from "./components/Header";
 import Slider from "./components/Slider";
@@ -18,62 +18,107 @@ import Social from "./components/Social";
 import TiendaWoman from "./pages/TiendaWoman";
 import TiendaMan from "./pages/TiendaMan";
 import JoinUs from "./pages/JoinUs";
+import Auth from "./components/Auth";
 
-function App() {
+const App = () => {
+  const url = process.env.REACT_APP_BACKEND_URL + "api";
+  const [tiendas, setTiendas] = useState([]);
+  const [loadingTiendas, setLoadingTiendas] = useState(true);
+  const [tieneAcceso, setTieneAcceso] = useState(false); 
+  const [datos, setDatos] = useState({});
+  const [token, setToken] = useState();
+
+  const recuperaDatos = async () => {
+    setLoadingTiendas(true);
+    try {
+      const respuesta = await fetch(url);
+      const resultado = await respuesta.json();
+      setTiendas(resultado);
+      console.log(resultado);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoadingTiendas(false);
+    }
+  };
+  useEffect(() => {
+    recuperaDatos();
+  }, []);
+
+  const gestionarAcceso = (dato) => {
+    setDatos(dato); // datos del usuario: email, password y token
+    setTieneAcceso(true); // La variable que indica que está logueado se pone a true
+    setToken(dato.token); // Por si fuera necesario
+    // localStorage.setItem(
+    //   "datosUsuario",
+    //   JSON.stringify(dato({ userId: dato.userId, token: dato.token }))
+    // );
+  };
+
   return (
     <div>
       <Router>
         <Switch>
           <Route exact path="/">
-            <div class="grid-container">
-              <div class="item1">
+            <div className="grid-container">
+              <div className="item1">
                 <Header />
               </div>
-              <div class="item2">
+              <div className="item2">
                 <Slider />
               </div>
-              <div class="item3">
+              <div className="item3">
                 <Mujer />
               </div>
-              <div class="item4">
+              <div className="item4">
                 <Work />
               </div>
 
-              <div class="item6">
+              <div className="item6">
                 <Social />
               </div>
-              <div class="item7">
+              <div className="item7">
                 <Hombre />
               </div>
               <footer>este es mi footer</footer>
             </div>
           </Route>
           <Route path="/woman">
-            <div class="grid-container">
-              <div class="item1">
+            <div className="grid-container">
+              <div className="item1">
                 <Header />
               </div>
               <div id="item8">
-              <TiendaWoman />
+                <TiendaWoman key={tiendas.id} onTiendas={tiendas} />
               </div>
             </div>
           </Route>
           <Route path="/man">
-            <div class="grid-container">
-              <div class="item1">
+            <div className="grid-container">
+              <div className="item1">
                 <Header />
               </div>
               <div id="item9">
-              <TiendaMan />
+                <TiendaMan />
               </div>
             </div>
           </Route>
           <Route path="/join-us">
-            <div class="grid-container">
-              <div class="item1">
+            <div className="grid-container">
+              <div className="item1">
                 <Header />
               </div>
-              {/* <JoinUs onTiendas={} key={tiendas.id} /> */}
+              <JoinUs />
+            </div>
+          </Route>
+          <Route path="/login">
+            <div className="grid-container">
+              <div className="item1">
+                <Header />
+              </div>
+              <div id="item10">
+                <Auth gestionarAcceso={gestionarAcceso}/>
+              </div>
             </div>
           </Route>
           <Redirect to="/" />
@@ -81,6 +126,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;

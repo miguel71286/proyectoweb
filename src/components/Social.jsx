@@ -5,7 +5,7 @@ import video from "../images/social-media.mp4";
 const Social = () => {
   return (
     <div id="social">
-      <a href="http://www.zara.com" target="_blank"><video
+      <a href="https://www.instagram.com/miguel_label7/" target="_blank"><video
         playsinline="playsinline"
         autoplay="autoplay"
         muted="muted"

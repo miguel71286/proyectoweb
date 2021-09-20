@@ -1,4 +1,4 @@
-// import Print from "../components/Print";
+import Print from "../components/Print";
 import "./tiendawoman.css";
 import video from "../images/womanpage.mp4";
 
@@ -6,20 +6,25 @@ const TiendaWoman = (props) => {
   const listaTiendas = props.onTiendas;
 
   return (
-    <div id="listadoWoman">
-      <video
-        playsinline="playsinline"
-        autoplay="autoplay"
+    <div className="contenedor-woman">
+      <div className="overlay"></div>
+
+      <video className="video-woman"
+        playsInline
+        autoPlay
         muted="muted"
-        loop="loop" 
+        loop="loop"
       >
         <source src={video} type="video/mp4" />
       </video>
-      {/* <div className="tarjetas">
-          {listaTiendas.map((elemento) => {
-            // return <Print key={elemento.id} onListado={elemento}/>;
-          })}
-        </div> */}
+
+      <div className="container h-100">
+        <div className="d-flex h-100">
+          <div className="w-100">
+            <Print />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
