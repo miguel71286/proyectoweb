@@ -1,0 +1,22 @@
+.design{
+    display: flex;
+    flex-direction: column;
+  flex:0.6;
+  border-radius:40px;
+  background-color: #fcf7f7
+  }
+  .image{
+    height: 130px;
+    margin-top: 70px;
+  
+  }
+  .typical{
+    color:#de0202;
+    font-size: 26px
+  }
+  .chand{
+    height: 120px;
+    width: 120px;
+    margin-top: 40px;
+    margin-left: 140px;
+  }

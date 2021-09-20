@@ -1,0 +1,11 @@
+.login{
+    display: flex;
+   flex-direction: column;
+   flex:0.7;
+   border-radius:20px;
+   background-color: #fa2f2f;
+   
+   }
+   .textfield{
+     margin-top: 100px;
+   }
