@@ -31,6 +31,12 @@
   margin-left:15px;
 }
 
+#icono-user:hover {
+  color: brown;
+  text-shadow: 2px 2px 2px beige;
+  transition: 0.5s ease-out;
+}
+
 #logo {
   margin-left: 10px;
   margin-top: 7px;

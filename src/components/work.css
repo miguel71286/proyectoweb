@@ -1,9 +1,18 @@
 #work {
-    background: url("../images/join-us.png");
-    background-size: cover;
-    width: 50%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: block;
-  }
+  background: url("../images/join-us.png");
+  background-size: cover;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#work :hover {
+  box-shadow: 2px 2px 2px #8a4b30;
+  transition: 0.5s ease-out;
+}
+
+#work :active {
+  box-shadow: 2px 2px 2px green;
+}

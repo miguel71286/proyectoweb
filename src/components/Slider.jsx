@@ -21,7 +21,7 @@ SwiperCore.use([EffectCube, Pagination]);
 
 const Slider = () => {
   return (
-    <Swiper
+    <Swiper id="slider"
       effect={"cube"}
       loop={true}
       grabCursor={true}

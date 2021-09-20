@@ -4,7 +4,9 @@ import {Link} from "react-router-dom";
 
 const Mujer = () => {
   return (
+  <div id="mujer">
     <Link to="/woman"> <div id="mujer" ></div> </Link>
+    </div>
   );
 };
 

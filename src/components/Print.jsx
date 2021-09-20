@@ -2,22 +2,20 @@ import React from "react";
 import { useState } from "react";
 // import swal from "sweetalert";
 import './print.css'
-import foto from "../images/man.png"
+import foto from "../images/woman.png"
 
 const Print = (props) => {
-    // const listadoFinal = props.onListado;
+    const articulo = props.articulo;
 
 return (
     <div
-      id="print"
-      className=" mb-3 w-25 p-3 position-ralative m-4"
-      // key={listadoFinal.id}
+      className="articulo col-3"
     >
-      <h4 className="card-header">Camisa Blanca</h4>
+      <h4 className="card-header">{articulo.articulo}</h4>
       <div className="card-body">
-       <img src={foto} width="200px" alt="" />
+       <img src={articulo.foto} alt="" className="foto" />
         <span id="precio" className="badge bg-secondary">
-          <em>Precio: 20,99€</em>
+          <em>{articulo.precio}€</em>
         </span>
       </div>
     </div>

@@ -80,7 +80,7 @@ const App = () => {
               <div className="item7">
                 <Hombre />
               </div>
-              <footer>este es mi footer</footer>
+              <footer>The Label Corner & copyright&copy;</footer>
             </div>
           </Route>
           <Route path="/woman">
@@ -99,7 +99,7 @@ const App = () => {
                 <Header />
               </div>
               <div id="item9">
-                <TiendaMan />
+                <TiendaMan key={tiendas.id} onTiendas={tiendas}/>
               </div>
             </div>
           </Route>
