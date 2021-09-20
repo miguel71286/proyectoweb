@@ -10,7 +10,7 @@ const TiendaWoman = (props) => {
 
   const getArticulos = async () => {
     await axios
-      .get("http://localhost:5000/api/mujer/woman")
+      .get(process.env.REACT_APP_BACKEND_URL + "/api/mujer/woman")
       .then((response) => {
         console.log(response.data);
         setArticulos(response.data.mujeres);

@@ -10,7 +10,7 @@ const TiendaMan = () => {
 
   const getArticulos = async () => {
     await axios
-      .get("http://localhost:5000/api/hombre/man")
+      .get(process.env.REACT_APP_BACKEND_URL + "/api/hombre/man")
       .then((response) => {
         console.log(response.data);
         setArticulos(response.data.hombres);
