@@ -28,22 +28,22 @@ const App = () => {
   const [datos, setDatos] = useState({});
   const [token, setToken] = useState();
 
-  const recuperaDatos = async () => {
-    setLoadingTiendas(true);
-    try {
-      const respuesta = await fetch(url);
-      const resultado = await respuesta.json();
-      setTiendas(resultado);
-      console.log(resultado);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoadingTiendas(false);
-    }
-  };
-  useEffect(() => {
-    recuperaDatos();
-  }, []);
+  // const recuperaDatos = async () => {
+  //   setLoadingTiendas(true);
+  //   try {
+  //     const respuesta = await fetch(url);
+  //     const resultado = await respuesta.json();
+  //     setTiendas(resultado);
+  //     console.log(resultado);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoadingTiendas(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   recuperaDatos();
+  // }, []);
 
   const gestionarAcceso = (dato) => {
     setDatos(dato); // datos del usuario: email, password y token
