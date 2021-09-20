@@ -54,7 +54,7 @@ export default function Auth(props) {
       return;
     }
     await axios
-      .post(process.env.REACT_APP_BACKEND_URL + "api/usuarios/alta", {
+      .post(process.env.REACT_APP_BACKEND_URL + "/api/usuarios/alta", {
         nombre: usernameRegistro, 
         email: emailRegistro, 
         password: passwordRegistro, 
@@ -81,7 +81,7 @@ export default function Auth(props) {
       return;
     }
     await axios
-      .post(process.env.REACT_APP_BACKEND_URL + "api/usuarios/login", {
+      .post(process.env.REACT_APP_BACKEND_URL + "/api/usuarios/login", {
         email: email, 
         password: password, 
       })
