@@ -55,3 +55,16 @@
   height: 107px;
 }
 
+.btn-cerrarSesion {
+  background-color: #eecc9b;
+  border-style: none;
+  color: #8a4b30;
+  margin-left:9px;
+}
+
+.btn-cerrarSesion:hover {
+  color: brown;
+  text-shadow: 2px 2px 2px beige;
+  transition: 0.5s ease-out;
+}
+

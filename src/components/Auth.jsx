@@ -6,8 +6,8 @@ import video from "../images/logo1.mp4";
 import swal from "sweetalert";
 
 export default function Auth(props) {
-  const { gestionarAcceso } = props; 
-  const [tieneAcceso, setTieneAcceso] = useState(false); 
+  const { gestionarAcceso } = props;
+  const [tieneAcceso, setTieneAcceso] = useState(false);
   const [estadoForm, setEstadoForm] = useState(true);
 
   const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ export default function Auth(props) {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm(); 
+  } = useForm();
 
   const gestorDeCambioDeModo = () => {
     if (!tieneAcceso) {
@@ -55,9 +55,9 @@ export default function Auth(props) {
     }
     await axios
       .post(process.env.REACT_APP_BACKEND_URL + "/api/usuarios/alta", {
-        nombre: usernameRegistro, 
-        email: emailRegistro, 
-        password: passwordRegistro, 
+        nombre: usernameRegistro,
+        email: emailRegistro,
+        password: passwordRegistro,
       })
       .then((response) => {
         swal({
@@ -66,7 +66,14 @@ export default function Auth(props) {
           icon: "success",
           button: "Aceptar",
         });
-        console.log("Usuario creado"); 
+
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userData: response.data.userId,
+            favId: response.data.favId,
+          })
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -82,8 +89,8 @@ export default function Auth(props) {
     }
     await axios
       .post(process.env.REACT_APP_BACKEND_URL + "/api/usuarios/login", {
-        email: email, 
-        password: password, 
+        email: email,
+        password: password,
       })
       .then((response) => {
         swal({
@@ -92,139 +99,141 @@ export default function Auth(props) {
           icon: "success",
           button: "Aceptar",
         });
-        console.log("Usuario loggeado"); 
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userData: response.data.userId,
+            favId: response.data.favId,
+          })
+        );
       })
       .catch((error) => {
         console.log(error);
       });
-  }; 
-
+  };
 
   return (
     <header>
-    {/* <div class="overlay"></div> */}
+      {/* <div class="overlay"></div> */}
 
-    <video
-      playsInline="playsInline"
-      autoplay="autoplay"
-      muted="muted"
-      loop="loop"
-    >
-      <source src={video} type="video/mp4" />
-    </video>
+      <video
+        playsInline="playsInline"
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+      >
+        <source src={video} type="video/mp4" />
+      </video>
 
-    <div class="container h-100">
-    <div className="auth-component">
-      {estadoForm ? (
-        <div className="login-form">
-          <form action="" onSubmit={inicioSesion}>
-            <h2 className="text-center">Inicio Sesion</h2>
-            <div className="form-group">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Email Usuario"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control mt-3"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="form-group d-flex justify-content-between">
-              <input
-                type="submit"
-                className="btn btn-outline-success btn-block mt-4"
-                value="Iniciar Sesion"
-              />
+      <div class="container h-100">
+        <div className="auth-component">
+          {estadoForm ? (
+            <div className="login-form">
+              <form action="" onSubmit={inicioSesion}>
+                <h2 className="text-center">Inicio Sesion</h2>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Email Usuario"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="form-control mt-3"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <div className="form-group d-flex justify-content-between">
+                  <input
+                    type="submit"
+                    className="btn btn-outline-success btn-block mt-4"
+                    value="Iniciar Sesion"
+                  />
 
-              <button
-                id="btn-cambia"
-                type="button"
-                className="btn btn-outline-secondary btn-block mt-4"
-                onClick={cambiarForm}
-              >
-                Cambiar
-              </button>
+                  <button
+                    id="btn-cambia"
+                    type="button"
+                    className="btn btn-outline-secondary btn-block mt-4"
+                    onClick={cambiarForm}
+                  >
+                    Cambiar
+                  </button>
+                </div>
+                {loginError ? (
+                  <div
+                    className="alert alert-danger mt-4 col-auto mx-auto"
+                    role="alert"
+                  >
+                    TIENES QUE RELLENAR TODOS LOS CAMPOS
+                  </div>
+                ) : null}
+              </form>
             </div>
-            {loginError ? (
-              <div
-                className="alert alert-danger mt-4 col-auto mx-auto"
-                role="alert"
-              >
-                TIENES QUE RELLENAR TODOS LOS CAMPOS
-              </div>
-            ) : null}
-          </form>
+          ) : (
+            <div className="login-form">
+              <form action="" onSubmit={registro}>
+                <h2 className="text-center">Registro</h2>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Nombre Usuario"
+                    value={usernameRegistro}
+                    onChange={(e) => setUsernameRegistro(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    className="form-control mt-3"
+                    placeholder="Email Usuario"
+                    value={emailRegistro}
+                    onChange={(e) => setEmailRegistro(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="form-control mt-3"
+                    placeholder="Password"
+                    value={passwordRegistro}
+                    onChange={(e) => setPasswordRegistro(e.target.value)}
+                  />
+                </div>
+                <div className="form-group d-flex justify-content-between">
+                  <input
+                    type="submit"
+                    className="btn btn-outline-success btn-block mt-4"
+                    value="Registrarse"
+                  />
+                  <button
+                    id="btn-cambia"
+                    type="button"
+                    className="btn btn-secondary btn-block mt-4"
+                    onClick={cambiarForm}
+                  >
+                    Cambiar
+                  </button>
+                </div>
+                {registroError ? (
+                  <div
+                    className="alert alert-danger mt-4 col-auto mx-auto"
+                    role="alert"
+                  >
+                    TIENES QUE RELLENAR TODOS LOS CAMPOS
+                  </div>
+                ) : null}
+              </form>
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="login-form">
-          <form action="" onSubmit={registro}>
-            <h2 className="text-center">Registro</h2>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Nombre Usuario"
-                value={usernameRegistro}
-                onChange={(e) => setUsernameRegistro(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="email"
-                className="form-control mt-3"
-                placeholder="Email Usuario"
-                value={emailRegistro}
-                onChange={(e) => setEmailRegistro(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control mt-3"
-                placeholder="Password"
-                value={passwordRegistro}
-                onChange={(e) => setPasswordRegistro(e.target.value)}
-              />
-            </div>
-            <div  className="form-group d-flex justify-content-between">
-              <input
-              
-                type="submit"
-                className="btn btn-outline-success btn-block mt-4"
-                value="Registrarse"
-              />
-              <button
-                id="btn-cambia"
-                type="button"
-                className="btn btn-secondary btn-block mt-4"
-                onClick={cambiarForm}
-              >
-                Cambiar
-              </button>
-            </div>
-            {registroError ? (
-              <div
-                className="alert alert-danger mt-4 col-auto mx-auto"
-                role="alert"
-              >
-                TIENES QUE RELLENAR TODOS LOS CAMPOS
-              </div>
-            ) : null}
-          </form>
-        </div>
-      )}
-    </div>
-    </div>
-  
-    
+      </div>
     </header>
   );
 }

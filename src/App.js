@@ -19,6 +19,7 @@ import TiendaWoman from "./pages/TiendaWoman";
 import TiendaMan from "./pages/TiendaMan";
 import JoinUs from "./pages/JoinUs";
 import Auth from "./components/Auth";
+import ListaFav from "./components/ListaFav";
 
 const App = () => {
   const url = process.env.REACT_APP_BACKEND_URL + "api";
@@ -118,6 +119,16 @@ const App = () => {
               </div>
               <div id="item10">
                 <Auth gestionarAcceso={gestionarAcceso}/>
+              </div>
+            </div>
+          </Route>
+          <Route path="/fav">
+            <div className="grid-container">
+              <div className="item1">
+                <Header />
+              </div>
+              <div id="item10">
+                <ListaFav />
               </div>
             </div>
           </Route>
