@@ -3,25 +3,35 @@ import { useState } from "react";
 // import swal from "sweetalert";
 import './print.css'
 import foto from "../images/man.png"
+import axios from "axios";
 
 const PrintMan = (props) => {
-    // const listadoFinal = props.onListado;
+  const articulo = props.articulo;
+  const añadirFavHombre = async () => {
+    try {
+      const favId = JSON.parse(localStorage.getItem("userData"))
+      await axios.patch(process.env.REACT_APP_BACKEND_URL + "/api/usuarios/addMan/" + favId.favId, {
+        "hombreId": articulo._id
+      })
+    } catch (error) {
+      
+    }
+  }
 
 return (
   <div
-  id="print"
-  className=" mb-3 w-25 p-3 position-ralative m-4"
-  // key={listadoFinal.id}
->
-  <h4 className="card-header">Camisa Blanca</h4>
-  <div className="card-body">
-   <img src={foto} width="200px" alt="" />
-    <span id="precio" className="badge bg-secondary">
-      <em>Precio: 20,99€</em>
-    </span>
+    className="articulo col-3"
+  >
+    <h4 className="card-header">{articulo.articulo}</h4>
+    <div className="card-body">
+     <img src={articulo.foto} alt="" className="foto" />
+      <span id="precio" className="badge bg-secondary">
+        Precio: <em>{articulo.precio}€</em>
+      </span>
+      <button id="btn-fav"type="button" class="btn btn-outline-secondary w3-block"onClick={añadirFavHombre}>Añadir a <i class="fa fa-heart"></i></button>
+    </div>
   </div>
-</div>
-  );
+);
 };
 
 export default PrintMan;

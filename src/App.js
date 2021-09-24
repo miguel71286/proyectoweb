@@ -20,6 +20,8 @@ import TiendaMan from "./pages/TiendaMan";
 import JoinUs from "./pages/JoinUs";
 import Auth from "./components/Auth";
 import ListaFav from "./components/ListaFav";
+import ListaFavMan from "./components/ListaFavMan"; 
+
 
 const App = () => {
   const url = process.env.REACT_APP_BACKEND_URL + "api";
@@ -127,8 +129,9 @@ const App = () => {
               <div className="item1">
                 <Header />
               </div>
-              <div id="item10">
-                <ListaFav />
+              <div id="item11">
+              <ListaFav />
+              <ListaFavMan />
               </div>
             </div>
           </Route>

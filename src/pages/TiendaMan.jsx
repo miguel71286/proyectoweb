@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./tiendaman.css";
 import video from "../images/manpage.mp4";
-import Print from "../components/Print";
+import PrintMan from "../components/PrintMan";
 import axios from "axios";
 
 const TiendaMan = () => {
@@ -42,7 +42,7 @@ const TiendaMan = () => {
           <div className="d-flex h-100">
             <div className="w-100 d-flex row justify-content-between">
               {articulos.map((articulo) => {
-                return <Print key={articulo._id} articulo={articulo} />;
+                return <PrintMan key={articulo._id} articulo={articulo} />;
               })}
             </div>
           </div>

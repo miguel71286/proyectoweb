@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState } from "react"; 
 // import swal from "sweetalert";
 import './print.css'
 import foto from "../images/woman.png"
